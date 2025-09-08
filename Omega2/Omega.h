@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-typedef struct{
+typedef struct __attribute__((packed)) {
     
     uint8_t chipRAM[2097152];
     uint8_t ZIISpace[8388608];
@@ -31,7 +31,7 @@ typedef struct{
     uint8_t AutoConfigSpace[1048576];
     uint8_t ExtendedROM[524288];
     uint8_t KickstartROM[524288];
-} Omega_t __attribute__((packed));
+} Omega_t;
 
 
 #endif /* Header_h */

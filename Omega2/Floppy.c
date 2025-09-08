@@ -188,7 +188,7 @@ void FloppyCycle(){
         }
         
         //printf("Cylinder (side: %d) - %d (PRA: 0x%x) ********************************************************\n",drive[number].side >> 2,drive[number].cylinder, PRA); printCPUContext();
-        printf(""); //Printf just as a debug break point
+        //printf(""); //Printf just as a debug break point
     }
     
     //Reset the step latch

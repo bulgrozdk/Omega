@@ -133,8 +133,8 @@ int main(int argc, const char * argv[]) {
     
     
     // Datatype size checks for debugging
-    printf("Internal Chipset Data structure size: %d bytes\n",sizeof(Chipset_t));
-    printf("Internal CIA Data structure size: %d bytes\n",sizeof(CIA_t));
+    printf("Internal Chipset Data structure size: %ld bytes\n",sizeof(Chipset_t));
+    printf("Internal CIA Data structure size: %ld bytes\n",sizeof(CIA_t));
     
     
     //Load ROM From Disk
