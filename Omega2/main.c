@@ -94,7 +94,7 @@ int main(int argc, const char * argv[]) {
     printf("Omega V2\n");
     
     if(16777216 - sizeof(Omega_t) != 0){
-        printf("Error!!! Memory allocation Wrong!");
+        printf("Error!!! Memory allocation Wrong!\n");
     }
     
 
@@ -144,10 +144,12 @@ int main(int argc, const char * argv[]) {
     //fd = open("/Users/Shared/Kick10.rom",O_RDONLY);
     //fd = open("/Users/Shared/Kick13.rom",O_RDONLY);
     //fd = open("/Users/Shared/Kick2.rom",O_RDONLY);
-    fd = open("/Users/Shared/Kick3.rom",O_RDONLY);
+    //fd = open("/Users/Shared/Kick3.rom",O_RDONLY);
     //fd = open("/Users/Shared/Kick31.rom",O_RDONLY);
     //fd = open("/Users/Shared/DiagROM1",O_RDONLY);
     //fd = open("/Users/Shared/DiagROM2",O_RDONLY);
+    //fd = open("kick13.rom",O_RDONLY);
+    fd = open("DiagROM",O_RDONLY);
     if(fd > 0){
         int size = (int)lseek(fd, 0, SEEK_END);
         lseek(fd, 0, SEEK_SET);
@@ -161,6 +163,8 @@ int main(int argc, const char * argv[]) {
         printf("BootROM Loaded OK!\n");
         close(fd);
     }
+    else
+        printf("Cannot load Kick ROM\n");
 
     
     fd = -1;
@@ -174,8 +178,7 @@ int main(int argc, const char * argv[]) {
     //fd = open("/Users/Shared/DLXP4.ADF",O_RDONLY);
     //fd = open("/Users/Shared/DLXP3.ADF",O_RDONLY);
     //fd = open("/Users/Shared/WB31.ADF",O_RDONLY);
-    
-    fd = open("/Users/Shared/Blitz2-1.adf",O_RDONLY);
+    //fd = open("/Users/Shared/Blitz2-1.adf",O_RDONLY);
     
     if(fd > 0){
         int size = (int)lseek(fd, 0, SEEK_END);
@@ -184,9 +187,11 @@ int main(int argc, const char * argv[]) {
         printf("ADF Loaded OK: %d bytes\n",size);
         close(fd);
     }
+    else
+        printf("Cannot open DF0:\n");
     
     
-    uint8_t DF1[1024*1024];
+    //uint8_t DF1[1024*1024];
     
     //fd = open("/Users/Shared/EX13.ADF",O_RDONLY);
     //fd = open("/Users/Shared/DISK1.ADF",O_RDONLY);
@@ -194,49 +199,49 @@ int main(int argc, const char * argv[]) {
     //fd = open("/Users/Shared/bpl0dat1.adf",O_RDONLY);
     //fd = open("/Users/Shared/WB31.ADF",O_RDONLY);
     
-    fd = open("/Users/Shared/Blitz2-2.adf",O_RDONLY);
+    //fd = open("/Users/Shared/Blitz2-2.adf",O_RDONLY);
     
-    if(fd > 0){
-        int size = (int)lseek(fd, 0, SEEK_END);
-        lseek(fd, 0, SEEK_SET);
-        read(fd, DF1, size);
-        printf("ADF Loaded OK: %d bytes\n",size);
-        close(fd);
-    }
+    //if(fd > 0){
+    //    int size = (int)lseek(fd, 0, SEEK_END);
+    //    lseek(fd, 0, SEEK_SET);
+    //    read(fd, DF1, size);
+    //    printf("ADF Loaded OK: %d bytes\n",size);
+    //    close(fd);
+    //}
     
     
-    uint8_t DF2[1024*1024];
+    //uint8_t DF2[1024*1024];
     //fd = open("/Users/Shared/DLXP4.ADF",O_RDONLY);
     
-    fd = open("/Users/Shared/Blitz2-3.adf",O_RDONLY);
+    //fd = open("/Users/Shared/Blitz2-3.adf",O_RDONLY);
     
-    if(fd > 0){
-        int size = (int)lseek(fd, 0, SEEK_END);
-        lseek(fd, 0, SEEK_SET);
-        read(fd, DF2, size);
-        printf("ADF Loaded OK: %d bytes\n",size);
-        close(fd);
-    }
+    //if(fd > 0){
+    //    int size = (int)lseek(fd, 0, SEEK_END);
+    //    lseek(fd, 0, SEEK_SET);
+    //    read(fd, DF2, size);
+    //    printf("ADF Loaded OK: %d bytes\n",size);
+    //    close(fd);
+    //}
     
-    uint8_t DF3[1024*1024];
+    //uint8_t DF3[1024*1024];
 
     //fd = open("/Users/Shared/Blitz2-4.adf",O_RDONLY);
-    fd = open("/Users/Shared/DISK1.ADF",O_RDONLY);
+    //fd = open("/Users/Shared/DISK1.ADF",O_RDONLY);
     //fd = open("/Users/Shared/DLXP4.ADF",O_RDONLY);
     
-    if(fd > 0){
-        int size = (int)lseek(fd, 0, SEEK_END);
-        lseek(fd, 0, SEEK_SET);
-        read(fd, DF3, size);
-        printf("ADF Loaded OK: %d bytes\n",size);
-        close(fd);
-    }
+    //if(fd > 0){
+    //    int size = (int)lseek(fd, 0, SEEK_END);
+    //    lseek(fd, 0, SEEK_SET);
+    //    read(fd, DF3, size);
+    //    printf("ADF Loaded OK: %d bytes\n",size);
+    //    close(fd);
+    //}
     
     FloppyInit();
     FloppyInsert(0, DF0);
-    FloppyInsert(1, DF1);
-    FloppyInsert(2, DF2);
-    FloppyInsert(3, DF3);
+//    FloppyInsert(1, DF1);
+//    FloppyInsert(2, DF2);
+//    FloppyInsert(3, DF3);
     
     m68k_init();//M68K_CPU_TYPE_68EC020
     m68k_set_cpu_type(M68K_CPU_TYPE_68000); //Pretend to be an A500 for now...
@@ -380,7 +385,7 @@ int main(int argc, const char * argv[]) {
                         DecodeCopperList(2);
                         break;
                         
-                        int fd = open("/Users/Shared/Dump.txt",O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
+                        int fd = open("Dump.txt",O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
                         write(fd,omega->chipRAM, 524288);
                         close(fd);
                         

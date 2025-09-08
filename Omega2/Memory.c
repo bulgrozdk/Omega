@@ -6,8 +6,8 @@
 //
 
 #include "Memory.h"
-#include "kick12.h"
-#include "kick13.h"
+//#include "kick12.h"
+//#include "kick13.h"
 #include "m68k.h"
 #include "CIA.h"
 #include "Floppy.h"
@@ -902,12 +902,12 @@ Omega_t* InitRAM(int RAM32bitSize){
         RAM24bit[i] = 0x84;
     }
     
-    printf("KickSize: %lu\n", sizeof(kick12));
+//    printf("KickSize: %lu\n", sizeof(kick12));
     
     //copy ROM image into 24bit address space
-    for(int i = 0;i<sizeof(kick12); ++i){
-        RAM24bit[0xF80000 + i] = kick12[i];
-    }
+//    for(int i = 0;i<sizeof(kick12); ++i){
+//        RAM24bit[0xF80000 + i] = kick12[i];
+//    }
     
     
     cpu_pulse_reset();

@@ -9,6 +9,7 @@
 #define DMA_h
 
 #include <stdio.h>
+#include <stdint.h>
 
 void DMAExecute(void* ChipState, uint32_t* framebuffer);
 
